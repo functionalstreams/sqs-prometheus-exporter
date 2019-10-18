@@ -1,4 +1,4 @@
-name: Push docker
+name: Build and publish
 
 on: [push]
 
@@ -8,4 +8,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build and push docker
-      run: make push
+      run: |
+        docker login --username ${{ secrets.DOCKER_PASSWORD }} --password ${{ secrets.DOCKER_USERNAME }}
+        make push
+    - name: Build and push helm chart
+      run: echo TBD
