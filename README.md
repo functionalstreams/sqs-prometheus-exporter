@@ -1,3 +1,12 @@
-# Sqs Prometheus Exporter
+# SQS Prometheus Exporter
 
-Sqs Prometheus Exporter description
+A simple SQS prometheus exporter based in python. 
+
+
+### Install with docker
+
+TODO
+
+### Installing with helm
+
+TODO
