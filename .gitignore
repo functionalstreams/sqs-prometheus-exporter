@@ -1,0 +1,11 @@
+venv/
+*.pyc
+*.egg-info/
+dist/
+settings.cfg
+*.log*
+*.eggs
+.idea
+index.yaml
+*.tgz
+.generated

@@ -1,0 +1,19 @@
+{{- if .Values.metrics.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "sqs-prometheus-exporter.fullname" . }}
+  labels:
+    prometheus: {{ .Values.metrics.serviceMonitor.prometheus }}
+{{ include "sqs-prometheus-exporter.labels" . | indent 4 }}
+spec:
+  endpoints:
+    - port: metrics
+      interval: 10s
+      scheme: http
+  namespaceSelector:
+    any: true
+  selector:
+    app.kubernetes.io/name: {{ include "sqs-prometheus-exporter.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}

@@ -1,0 +1,35 @@
+name: Build and publish
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish-docker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build docker
+      run: make build-docker
+    - name: Push docker
+      run: |
+        docker login --username ${{ secrets.DOCKER_USERNAME}} --password ${{ secrets.DOCKER_PASSWORD }}
+        make push-docker
+
+  publish-helm-chart:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build helm chart
+      run: |
+        helm init --client-only
+        make package-helm
+    - name: Publish helm chart
+      run: |
+        helm init --client-only
+        export GIT_API_TOKEN=${{ secrets.GIT_API_TOKEN}}
+        rm -rf .git
+        git config --global user.email "github@functionalstreams.co.uk"
+        git config --global user.name "Github Actions"
+        make publish-helm-chart

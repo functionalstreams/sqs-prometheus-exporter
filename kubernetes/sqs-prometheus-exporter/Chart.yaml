@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A Helm chart for sqs prometheus exporter
+name: sqs-prometheus-exporter
+version: 0.0.1

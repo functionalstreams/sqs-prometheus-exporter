@@ -1,0 +1,33 @@
+replicaCount: 1
+
+image:
+  repository: functionalstreams/sqs-prometheus-exporter
+  tag: 0.0.3
+  pullPolicy: IfNotPresent
+
+nameOverride: ""
+fullnameOverride: ""
+
+awsRegion: eu-west-1
+
+service:
+  type: ClusterIP
+  port: 9095
+
+metrics:
+  serviceMonitor:
+    enabled: true
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 128Mi
+  requests:
+    cpu: 200m
+    memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
