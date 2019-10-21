@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: functionalstreams/sqs-prometheus-exporter
-  tag: 0.0.3
+  tag: 0.1.1
   pullPolicy: IfNotPresent
 
 nameOverride: ""
