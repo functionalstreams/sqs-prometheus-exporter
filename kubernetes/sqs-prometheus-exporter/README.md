@@ -41,8 +41,8 @@ The following table lists the configurable parameters of the Kafka Manager chart
 
 Parameter | Description | Default
 --------- | ----------- | -------
-`image.repository` | Container image repository | `zenko/kafka-manager`
-`image.tag` | Container image tag | `1.3.3.22`
+`image.repository` | Container image repository | `functionalstreams/sqs-prometheus-exporter`
+`image.tag` | Container image tag | `0.1.1`
 `image.pullPolicy` | Container image pull policy | `IfNotPresent`
 `metrics.serviceMonitor.enabled` | Whether to enable prometheus service monitor | `true`
 `queuesToMonitor` | Comma separated list of the queues to monitor | `example`
