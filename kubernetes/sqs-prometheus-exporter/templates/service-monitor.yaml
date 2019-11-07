@@ -11,9 +11,8 @@ spec:
     - port: metrics
       interval: 10s
       scheme: http
-  namespaceSelector:
-    any: true
   selector:
-    app.kubernetes.io/name: {{ include "sqs-prometheus-exporter.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
+    matchLabels:
+      app.kubernetes.io/name: {{ include "sqs-prometheus-exporter.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
